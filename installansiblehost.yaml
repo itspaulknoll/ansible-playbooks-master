@@ -1,0 +1,10 @@
+---
+  - name: install a few things on ansible hosts for awx
+    hosts: all
+    become: yes
+    tasks:
+      - name: installing packages with apt
+        apt:
+          name: nodejs,npm,python3-pip,git,pwgen,vim
+          update_cache: yes
+          state: latest

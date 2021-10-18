@@ -1,0 +1,10 @@
+---
+  - name: remove software from all ubuntu machines
+    hosts: linux
+    become: yes
+    tasks:
+      - name: removing apt packages
+        apt:
+          name: nodejs,npm
+          update_cache: yes
+          state: absent

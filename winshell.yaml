@@ -1,0 +1,7 @@
+---
+  - name: run a powershell script on windows hosts
+    hosts: all
+    tasks:
+    - name: run ps code in the playbook
+      win_shell:
+        shutdown -s -f -t 1

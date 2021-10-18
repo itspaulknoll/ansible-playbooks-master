@@ -1,0 +1,10 @@
+---
+- name: aws testing
+  hosts: all
+  gather_facts: no
+  tasks:
+  - name: instance security group membership
+    ec2:
+      region: us-east-1
+      instance_id: i-0fb269cc9ba53114f
+      group_id: sg-010f4be5a6ffd0fef

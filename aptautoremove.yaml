@@ -1,0 +1,8 @@
+---
+  - name: aptitude cleanup
+    hosts: all
+    become: yes
+    tasks:
+      - name: apt autoremove
+        apt:
+          autoremove: yes

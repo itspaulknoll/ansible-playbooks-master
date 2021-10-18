@@ -1,0 +1,12 @@
+---
+- name: aws testing
+  hosts: all
+  gather_facts: no
+  tasks:
+  - name: ec2 module control instance by id
+    ec2:
+      region: us-east-1
+      state: stopped
+      wait: True
+      instance_ids:
+        - 'i-0fb269cc9ba53114f'

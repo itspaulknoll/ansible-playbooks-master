@@ -1,0 +1,27 @@
+---
+  - name: deploy and configure wireguard
+    hosts: all
+    become: yes
+    tasks:
+      - name: apt update
+        apt:
+          update_cache: yes
+
+#      - name: install common software
+#        apt:
+#          name: software-properites-common
+#          state: latest
+
+      - name: add wireguard repo with shell command
+        shell: add-apt-repository ppa:wireguard/wireguard -y
+
+      - name: apt install wireguard
+        apt:
+          name: wireguard,wireguard-tools,wireguard-dkms
+          state: latest
+
+      - name: generate server keys with shell module
+        shell: wg genkey | sudo tee /etc/wireguard/server_private.key | wg pubkey | sudo tee /etc/wireguard/server_public.key
+
+      - name: generate client keys with shell module
+        shell: wg genkey | sudo tee /etc/wireguard/client_private.key | wg pubkey | sudo tee /etc/wireguard/client_public.key

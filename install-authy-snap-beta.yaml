@@ -1,0 +1,10 @@
+---
+  - name: install authy beta desktop app
+    hosts: all
+    become: yes
+    tasks:
+      - name: installing the beta with snap
+        snap:
+          name: authy
+          state: present
+          channel: beta

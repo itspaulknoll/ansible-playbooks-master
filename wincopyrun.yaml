@@ -1,0 +1,12 @@
+---
+  - name: copy and run a powershell script on windows hosts
+    hosts: all
+    tasks:
+    - name: copy the exe or script file from the host to the temp directory
+      win_copy:
+        src: /etc/ansible/ansible-playbooks/ngen.ps1
+        dest: 'c:\temp\'
+        remote_src: no
+
+    - name: now try to run it with command module
+      win_command: powershell.exe -ExecutionPolicy ByPass -File C:/temp/ngen.ps1

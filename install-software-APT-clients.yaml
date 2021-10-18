@@ -1,0 +1,11 @@
+---
+  - name: install a few things with apt module
+    hosts: all
+    become: yes
+    tasks:
+      
+      - name: installing some packages with apt
+        apt:
+          name: gimp,gscan2pdf,steam,firefox,gnome-tweak-tool,python3
+          update_cache: yes
+          state: latest
